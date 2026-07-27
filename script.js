@@ -1,3 +1,4 @@
+const bgVideo = document.getElementById("background-video");
 const closedEnvelope = document.getElementById("closedEnvelope");
 const openEnvelope = document.getElementById("openEnvelope");
 // Hintergrundmusik (derzeit deaktiviert)
@@ -5,6 +6,11 @@ const openEnvelope = document.getElementById("openEnvelope");
 
 
 closedEnvelope.addEventListener("click",()=>{
+    bgVideo.pause();
+    bgVideo.play().catch(() => {});
+    bgVideo.play().catch(err => {
+    console.log("Video konnte nicht gestartet werden:", err);
+});
     /*
     ----------------------------------------
     Hintergrundmusik (deaktiviert)
