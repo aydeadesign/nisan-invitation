@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<!-- HEAD -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+    content="Bu özel günümüzde sizleri aramızda görmekten büyük mutluluk duyacağız.">
+    <!-- Bowserleiste Farbe anpassen -->
+    <meta name="theme-color" content="#F7F5EF">
+
+    <title>Enise & Kürsat | Nişan Davetiyesi</title>
+    
+    <link rel="icon" href="assets/favicon.png" type="image/png">
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- LINK BILDER -->
+    <meta property="og:title" content="Enise & Kürsat | Nişan Davetiyesi">
+    <meta property="og:description"
+    content="Bu özel günümüzde sizleri aramızda görmekten büyük mutluluk duyacağız.">
+    <meta property="og:image" content="assets/preview.jpg">
+    <meta property="og:type" content="website">
+     <!-- <script src="https://unpkg.com/lucide@latest"></script> -->
+</head>
+
+<!-- BODY -->
+<body>
+    <!-- Navigation -->
+    <nav class="floating-nav">
+        <div class="nav-name">
+        ♡
+        </div>
+        <div class="nav-links">
+        <a href="#welcome">Hoşgeldiniz</a>
+        <a href="#program">Program</a>
+        <a href="#location">Konum</a>
+        </div>
+    </nav>
+
+    <!-- Hintergrund Video -->
+    <video autoplay muted loop playsinline id="background-video">
+        <source src="assets/background.mp4" type="video/mp4">
+    </video>
+    <div class="overlay"></div>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div id="petals-container"></div>
+        <div class="container">
+            <!-- geschlossener Umschlag -->
+            <div id="closedEnvelope" class="closed-envelope">
+                <img src="assets/envelope_closed.png">
+            </div>
+
+            <!-- offener Umschlag Bereich -->
+            <div id="openEnvelope" class="open-envelope hidden">
+                <!-- hinterer Teil vom Umschlag -->
+                <img 
+                src="assets/envelope_back.png" 
+                class="envelope-back">
+                <!-- Einladung -->
+                <img 
+                src="assets/invitation.png"
+                class="invitation">
+                <!-- Vorderer Umschlag -->
+                <img 
+                src="assets/envelope_front.png"
+                class="envelope-front">
+            </div>
+        </div>
+
+        <!-- "Scrollen" -->
+        <div class="scroll-hint">
+            <span>↓</span>
+            <p>DAVETİYEMİZİ İNCELEYİN</p>
+        </div>
+    </section>
+
+    <!-- WILLKOMMEN -->
+    <section id="welcome" class="welcome reveal">
+        <img
+        src="assets/decorations/eucalyptus-top-right.png"
+        class="decor decor-top-right"
+        data-rotate="rotate(8deg)">
+        <img
+        src="assets/decorations/eucalyptus-bottom-left.png"
+        class="decor decor-bottom-left"
+        data-rotate="rotate(-12deg)">
+        <h1>Hoşgeldiniz</h1>
+        <p>Bu özel günümüzde sizleri aramızda görmekten büyük mutluluk duyacağız.</p>
+    </section>
+
+    <!-- COUNTDOWN -->
+    <section id="countdown" class="countdown reveal">
+        <img src="assets/decorations/eucalyptus-top-left.png"
+        class="decor countdown-leaf"
+        alt="">
+        <p class="small-title">ÖZEL GÜNÜMÜZ</p>
+        <h2>Countdown</h2>
+        <div id="timer">
+            <div class="time-box">
+                <span id="days">00</span>
+                <p>GÜN</p>
+            </div>
+            <div class="time-box">
+                <span id="hours">00</span>
+                <p>SAAT</p>
+            </div>
+            <div class="time-box">
+                <span id="minutes">00</span>
+                <p>DAKİKA</p>
+            </div>
+            <div class="time-box">
+                <span id="seconds">00</span>
+                <p>SANİYE</p>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ABLAUF / PROGRAM -->
+    <section id="program" class="program reveal">
+        <img src="assets/decorations/eucalyptus-top-right.png"
+        class="decor program-top"
+        alt="">
+        <img src="assets/decorations/eucalyptus-bottom-right.png"
+        class="decor program-bottom"
+        alt="">
+        <p class="small-title">PROGRAM</p>
+        <h2>Program Akışı</h2>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="time">16:00</div>
+                <div class="event">
+                    <img src="assets/icons/toplanis.png"
+                        class="timeline-icon"
+                        alt="Toplanış">
+                    <h3>Toplanış</h3>
+                </div>
+            </div>
+
+            <div class="timeline-connector"></div>
+
+            <div class="timeline-item">
+                <div class="time">16:30</div>
+                <div class="event">
+                    <img src="assets/icons/brautpaar.png"
+                        class="timeline-icon"
+                        alt="Brautpaar">
+                    <h3>Giriş &amp; Açılış Konuşması</h3>
+                </div>
+            </div>
+
+            <div class="timeline-connector"></div>
+
+            <div class="timeline-item">
+                <div class="time">16:45</div>
+                <div class="event">
+                    <img src="assets/icons/ilahi.png"
+                        class="timeline-icon"
+                        alt="İlahi">
+                    <h3>Aşr-ı Şerîf &amp; İlahi</h3>
+                </div>
+            </div>
+
+            <div class="timeline-connector"></div>
+
+            <div class="timeline-item">
+                <div class="time">17:15</div>
+                <div class="event">
+                    <img src="assets/icons/sohbet.png"
+                        class="timeline-icon"
+                        alt="Sohbet">
+                    <h3>Manevi Sohbet</h3>
+                </div>
+            </div>
+            
+            <div class="timeline-connector"></div>
+
+            <div class="timeline-item">
+                <div class="time">17:45</div>
+                <div class="event">
+                    <img src="assets/icons/ringe.png"
+                        class="timeline-icon"
+                        alt="Ringe">
+                    <h3>Yüzük &amp; Duâ</h3>
+                </div>
+            </div>
+
+            <div class="timeline-connector"></div>
+
+            <div class="timeline-item">
+                <div class="time">19:00</div>
+                <div class="event">
+                    <img src="assets/icons/essen.png"
+                        class="timeline-icon"
+                        alt="Essen">
+                    <h3>Yemek İkramı</h3>
+                </div>
+            </div>
+        </div>
+        <div class="timeline-leaf"></div>
+    </section>
+
+    <!-- LOCATION -->
+    <section id="location" class="location reveal">
+        <p class="small-title location-title">KONUM</p>
+        <h2>Nişanlandığımız yer</h2>
+        <div class="location-card">
+            <h3>Mut's Kitchen</h3>
+            <p class="address">
+            Stresemannstraße 110<br>
+            27576 Bremerhaven-Lehe
+            </p>
+            <a 
+            href="https://www.google.com/maps/search/?api=1&query=Mut's+Kitchen+Stresemannstraße+110+27576+Bremerhaven"
+            target="_blank"
+            class="map-button">
+            Haritada Aç
+            </a>
+        </div>
+        <div class="map-container">
+            <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d148.1374066303869!2d8.593828988062029!3d53.554223812961084!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b6b10beb2db45b%3A0xb110469675215023!2sStresemannstra%C3%9Fe%20110%2C%2027576%20Bremerhaven-Lehe!5e0!3m2!1sde!2sde!4v1784569237964!5m2!1sde!2sde" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"
+            loading="lazy">
+            </iframe>
+        </div>
+    </section>
+
+    <!-- ENDING -->
+    <section class="ending reveal">
+        <img src="assets/decorations/eucalyptus-top-left.png"
+        class="decor ending-top"
+        alt="">
+        <img src="assets/decorations/eucalyptus-bottom-right.png"
+        class="decor ending-bottom"
+        alt="">
+        <h2 class="ending-title">
+        <span>Enise Melda</span>
+        <span class="ampersand">&amp;</span>
+        <span>Kürşat</span>
+        </h2>
+        <div class="heart">♡</div>
+        <p class="names">30 | 08 | 2026</p>
+        <div class="footer-credit">
+        Crafted with ♡ by
+        <a href="https://instagram.com/aydeadesign"
+        target="_blank"
+        rel="noopener noreferrer">
+        @AydeaDesign
+        </a>
+        </div>
+        <div class="ending-leaf-top"></div>
+        <div class="ending-leaf-bottom"></div>
+    </section>
+
+    <!--
+    Musik-Button
+    Aktivieren zusammen mit der Hintergrundmusik.
+    -->
+    <!--
+    <button id="musicToggle"
+            class="music-button"
+            aria-label="Musik umschalten">
+            <i data-lucide="volume-2"></i>
+    </button>
+    -->
+
+    <!--
+    Hintergrundmusik
+    Aktivieren:
+    Kommentar entfernen und den Musik-Code in script.js wieder einkommentieren.
+    -->
+    <!--
+    <audio id="bgMusic" loop>
+        <source src="assets/music/wedding.mp3" type="audio/mpeg">
+    </audio>
+    -->
+
+    <script src="script.js"></script>
+</body>
+</html>
