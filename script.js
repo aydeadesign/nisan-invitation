@@ -4,6 +4,17 @@ const openEnvelope = document.getElementById("openEnvelope");
 // Hintergrundmusik (derzeit deaktiviert)
 // const music = document.getElementById("bgMusic");
 
+function setViewportHeight() {
+    document.documentElement.style.setProperty(
+        "--vh",
+        `${window.innerHeight * 0.01}px`
+    );
+}
+
+setViewportHeight();
+
+window.addEventListener("resize", setViewportHeight);
+window.addEventListener("orientationchange", setViewportHeight);
 
 closedEnvelope.addEventListener("click",()=>{
     bgVideo.pause();
