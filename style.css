@@ -9,6 +9,9 @@ body {
     font-family:"Montserrat",sans-serif;
     color:#46564A;
     line-height:1.8;
+    /*background:#F8F6F2;*/
+    background:#F7F5EF;
+    color:#3B4A41;
 }
 
 #background-video{
@@ -134,7 +137,6 @@ section {
 .welcome {
     min-height:100svh;
     min-height:100dvh;
-    background:#F7F5EF;
     display:flex;
     flex-direction:column;
     justify-content:center;
@@ -181,8 +183,8 @@ section {
     line-height:1.8;
 }
 
-.countdown{
-    background:#F2EEE8;
+.countdown {
+    background:#EFEAE0;
     padding:120px 25px;
     position:relative;
     overflow:hidden;
@@ -257,12 +259,6 @@ p {
     font-size:25px;
 }
 
-/* Luxury Wedding Design */
-body {
-    background:#F7F5EF;
-    color:#3B4A41;
-}
-
 h1,
 h2,
 h3 {
@@ -275,11 +271,6 @@ p,
 span {
     font-family:'Montserrat', sans-serif;
     font-weight:300;
-}
-
-.countdown {
-    background:#EFEAE0;
-    text-align:center;
 }
 
 h2{
@@ -307,13 +298,6 @@ h2{
 .countdown h2 {
     font-size:70px;
     margin-bottom:50px;
-}
-
-#timer {
-    display:flex;
-    justify-content:center;
-    gap:20px;
-    flex-wrap:wrap;
 }
 
 .time-box {
@@ -594,11 +578,6 @@ h2{
     line-height:1.1;
 }
 
-.ending-text {
-    max-width:500px;
-    margin:30px 0;
-}
-
 .heart {
     font-size:50px;
     color:#486A58;
@@ -634,7 +613,6 @@ h2{
     transform:translate(-50%, -20px);
     pointer-events:none;
     transition:1s ease;
-    background:rgba(247,245,239,0.85);
     background:rgba(255,255,255,.72);
     padding:15px 30px;
     border-radius:50px;
@@ -808,10 +786,6 @@ section {
     width:100%;
 }
 
-@media(max-width:768px){
-
-}
-
 .decor{
     position:absolute;
     width:clamp(110px, 18vw, 400px);
@@ -865,11 +839,6 @@ section {
     animation-duration:11s;
 }
 
-.section-content{
-    max-width:900px;
-    margin:0 auto;
-    padding:0 24px;
-}
 
 .music-button{
     position:fixed;

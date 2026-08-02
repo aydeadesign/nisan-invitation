@@ -1,9 +1,24 @@
+/* ======================================================
+    Enise Melda & Kürşat | Nişan Davetiyesi Website
+    Entwickler: AydeaDesign
+    Technologien: HTML • CSS • JavaScript
+====================================================== */
+
+/* ======================================================
+   INITIALISIERUNG
+   Referenzen auf wichtige HTML-Elemente
+====================================================== */
 const bgVideo = document.getElementById("background-video");
 const closedEnvelope = document.getElementById("closedEnvelope");
 const openEnvelope = document.getElementById("openEnvelope");
 // Hintergrundmusik (derzeit deaktiviert)
 // const music = document.getElementById("bgMusic");
 
+/* ======================================================
+   MOBILE VIEWPORT
+   Behebt die 100vh-Problematik auf iOS und Android,
+   damit die Hero-Sektion immer die korrekte Höhe hat.
+====================================================== */
 function setViewportHeight() {
     document.documentElement.style.setProperty(
         "--vh",
@@ -16,19 +31,29 @@ setViewportHeight();
 window.addEventListener("resize", setViewportHeight);
 window.addEventListener("orientationchange", setViewportHeight);
 
+/* ======================================================
+   HERO
+   Öffnet den Umschlag, startet die Animationen
+   und blendet anschließend die Einladung ein.
+====================================================== */
 closedEnvelope.addEventListener("click",()=>{
     bgVideo.pause();
-    bgVideo.play().catch(() => {});
+    //bgVideo.play().catch(() => {});
     bgVideo.play().catch(err => {
     console.log("Video konnte nicht gestartet werden:", err);
 });
-    /*
-    ----------------------------------------
+
+/*
+--------------------------------------------------------
     Hintergrundmusik (deaktiviert)
-    Aktivieren:
-    Kommentar entfernen und <audio id="bgMusic">
-    in der index.html ebenfalls aktivieren.
-----------------------------------------
+
+    Zum Aktivieren:
+
+    1. <audio id="bgMusic"> in index.html einkommentieren
+    2. music-Konstante oben aktivieren
+    3. Diesen Block wieder einkommentieren
+--------------------------------------------------------
+
     music.volume = 0;
     music.play();
     musicButton.innerHTML =
@@ -43,7 +68,8 @@ closedEnvelope.addEventListener("click",()=>{
         clearInterval(fadeMusic);
     }
     },200);
-    */
+*/
+
    closedEnvelope.classList.add("fade-out");
     setTimeout(()=>{
         closedEnvelope.style.display="none";
@@ -67,7 +93,11 @@ closedEnvelope.addEventListener("click",()=>{
 },1000);
 });
 
-// Countdown Datum
+/* ======================================================
+   COUNTDOWN
+   Aktualisiert die verbleibende Zeit bis zum
+   Verlobungstag im Sekundentakt.
+====================================================== */
 const weddingDate = new Date("August 30, 2026 16:00:00").getTime();
 
 function updateCountdown(){
@@ -107,8 +137,10 @@ function updateCountdown(){
 updateCountdown();
 setInterval(updateCountdown,1000);
 
-
-// Scroll Animation
+/* ======================================================
+   SCROLL-ANIMATIONEN
+   Blendet Abschnitte beim Scrollen weich ein.
+====================================================== */
 const reveals = document.querySelectorAll(".reveal");
 
 function revealOnScroll(){
@@ -130,7 +162,10 @@ window.addEventListener(
 
 revealOnScroll();
 
-// Navigation erst beim Scrollen anzeigen
+/* ======================================================
+   FLOATING NAVIGATION
+   Zeigt die Navigation erst nach dem Hero-Bereich an.
+====================================================== */
 const nav = document.querySelector(".floating-nav");
 
 window.addEventListener("scroll",()=>{
@@ -141,6 +176,10 @@ window.addEventListener("scroll",()=>{
     }
 });
 
+/* ======================================================
+   BLÜTENANIMATION
+   Erstellt beim Öffnen des Umschlags fallende Blüten.
+====================================================== */
 const petalImages = [
     "assets/petals/petal1.png",
     "assets/petals/petal2.png",
@@ -172,7 +211,10 @@ function createPetal(){
     },7000);
 }
 
-// Aktive Navigation
+/* ======================================================
+   AKTIVE NAVIGATION
+   Markiert den aktuell sichtbaren Abschnitt.
+====================================================== */
 const sections = document.querySelectorAll("section[id]");
 const navLinks = document.querySelectorAll(".nav-links a");
 
@@ -196,6 +238,10 @@ window.addEventListener("scroll", () => {
     });
 });
 
+/* ======================================================
+   PARALLAX-DEKORATION
+   Bewegt die Eukalyptuszweige leicht beim Scrollen.
+====================================================== */
 const decorations = document.querySelectorAll(".decor");
 
 window.addEventListener("scroll", () => {
@@ -219,7 +265,6 @@ Kommentar entfernen.
 ==========================================
 
 ...
-
 
 const musicButton = document.getElementById("musicToggle");
 
@@ -253,3 +298,17 @@ window.addEventListener("scroll",showMusicButton);
 window.addEventListener("click",showMusicButton);
 window.addEventListener("touchstart",showMusicButton);
 */
+
+/* ======================================================
+
+    AydeaDesign
+    Luxury Digital Invitations
+
+    Project:
+    Enise Melda & Kürşat
+    Engagement Invitation Website
+
+    Version: 1.0
+    Released: August 2026
+
+====================================================== */
