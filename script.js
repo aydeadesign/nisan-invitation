@@ -280,3 +280,86 @@ function createPetal() {
     Released: August 2026
 
 ====================================================== */
+
+/* ======================================================
+   DEBUG / DEEP ANALYSIS WIDGET
+   Fügt ein sichtbares Overlay hinzu, das Viewport- und
+   Element-Metriken anzeigt, um die Ursache der Haarnaht
+   zwischen Hero und Welcome zu identifizieren.
+
+   Änderungen sind diagnostisch und reversibel.
+====================================================== */
+(function addDebugWidget() {
+    try {
+        const debug = document.createElement('div');
+        debug.id = 'debug-overlay';
+        debug.style.position = 'fixed';
+        debug.style.right = '10px';
+        debug.style.top = '10px';
+        debug.style.zIndex = '99999';
+        debug.style.background = 'rgba(0,0,0,0.6)';
+        debug.style.color = 'white';
+        debug.style.fontSize = '12px';
+        debug.style.lineHeight = '1.3';
+        debug.style.padding = '8px 10px';
+        debug.style.borderRadius = '8px';
+        debug.style.maxWidth = '220px';
+        debug.style.fontFamily = 'monospace';
+        debug.style.pointerEvents = 'none';
+        debug.innerHTML = 'debug initializing...';
+        document.body.appendChild(debug);
+
+        // enable debug outlines
+        document.body.classList.add('debug-mode');
+
+        const heroEl = document.querySelector('.hero');
+        const welcomeEl = document.querySelector('.welcome');
+
+        function updateDebug() {
+            const innerH = window.innerHeight;
+            const scrollY = window.scrollY || window.pageYOffset;
+            const cssVh = getComputedStyle(document.documentElement).getPropertyValue('--vh') || 'unset';
+            const visualH = (window.visualViewport && window.visualViewport.height) ? window.visualViewport.height : 'n/a';
+            const heroRect = heroEl ? heroEl.getBoundingClientRect() : null;
+            const welcomeRect = welcomeEl ? welcomeEl.getBoundingClientRect() : null;
+
+            const lines = [];
+            lines.push(`<strong>innerH:</strong> ${innerH}px`);
+            lines.push(`<strong>visualH:</strong> ${visualH}px`);
+            lines.push(`<strong>--vh:</strong> ${cssVh}`);
+            lines.push(`<strong>scrollY:</strong> ${Math.round(scrollY)}px`);
+            if (heroRect) {
+                lines.push(`<strong>hero.h:</strong> ${Math.round(heroRect.height)}px`);
+                lines.push(`<strong>hero.bottom:</strong> ${Math.round(heroRect.bottom)}px`);
+            }
+            if (welcomeRect) {
+                lines.push(`<strong>welcome.top:</strong> ${Math.round(welcomeRect.top)}px`);
+                lines.push(`<strong>welcome.h:</strong> ${Math.round(welcomeRect.height)}px`);
+            }
+
+            debug.innerHTML = lines.join('<br>');
+        }
+
+        const debouncedUpdate = (() => {
+            let t;
+            return () => {
+                clearTimeout(t);
+                t = setTimeout(updateDebug, 60);
+            };
+        })();
+
+        window.addEventListener('resize', debouncedUpdate);
+        window.addEventListener('orientationchange', debouncedUpdate);
+        window.addEventListener('scroll', debouncedUpdate);
+        if (window.visualViewport) {
+            window.visualViewport.addEventListener('resize', debouncedUpdate);
+            window.visualViewport.addEventListener('scroll', debouncedUpdate);
+        }
+
+        // initial
+        updateDebug();
+
+    } catch (err) {
+        console.error('debug widget failed', err);
+    }
+})();
