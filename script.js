@@ -27,6 +27,8 @@ function setViewportHeight() {
         "--vh",
         `${vh * 0.01}px`
     );
+    // nachdem --vh neu gesetzt wurde, passe die Naht an (wenn nötig)
+    adjustWelcomeOverlap();
 }
 
 setViewportHeight();
@@ -47,6 +49,61 @@ if (window.visualViewport) {
         vhTimeout = setTimeout(setViewportHeight, 80);
     });
 }
+
+/* ======================================================
+   HELPER: Naht zwischen .hero und .welcome dynamisch anpassen
+   Wenn die Viewport-Höhe schwankt (Adressleiste), berechnen wir
+   die Differenz hero.bottom -> welcome.top und ziehen die
+   Welcome-Section bei Bedarf nach oben (negativer margin-top).
+
+   Diese Logik läuft nur auf kleinen Bildschirmen / Landscape,
+   ist debounced und reversibel (setzt style zurück wenn nicht
+   mehr nötig).
+====================================================== */
+const seamDebounce = (fn, wait = 60) => {
+    let t;
+    return function(...args) {
+        clearTimeout(t);
+        t = setTimeout(() => fn.apply(this, args), wait);
+    };
+};
+
+function adjustWelcomeOverlap() {
+    try {
+        const mq = window.matchMedia('(max-width: 1024px), (orientation: landscape)');
+        if (!mq.matches) {
+            // Desktop: entferne Inline-Anpassung wenn vorhanden
+            const welcome = document.querySelector('.welcome');
+            if (welcome && welcome.style.marginTop) welcome.style.marginTop = '';
+            return;
+        }
+
+        const hero = document.querySelector('.hero');
+        const welcome = document.querySelector('.welcome');
+        if (!hero || !welcome) return;
+
+        const heroRect = hero.getBoundingClientRect();
+        const welcomeRect = welcome.getBoundingClientRect();
+
+        // Gap: wie viele Pixel liegen zwischen hero.bottom und welcome.top
+        const gap = Math.round(welcomeRect.top - heroRect.bottom);
+
+        if (gap > 0) {
+            // noch Abstand — ziehen wir welcome nach oben um die Lücke zu schließen
+            // begrenze die Korrektur (z.B. max 200px) um ungewollte große Verschiebungen zu vermeiden
+            const correction = Math.min(gap, 200);
+            welcome.style.marginTop = `-${correction}px`;
+        } else {
+            // kein Abstand — entferne Inline-Anpassung
+            if (welcome.style.marginTop) welcome.style.marginTop = '';
+        }
+    } catch (e) {
+        // defensive
+        console.error('adjustWelcomeOverlap error', e);
+    }
+}
+
+const adjustWelcomeOverlapDebounced = seamDebounce(adjustWelcomeOverlap, 48);
 
 /* ======================================================
    HERO
@@ -217,6 +274,7 @@ const onScrollThrottled = throttle(() => {
     updateNavShow();
     updateActiveSection();
     updateParallax();
+    adjustWelcomeOverlapDebounced();
 }, 40);
 
 window.addEventListener("scroll", onScrollThrottled);
@@ -226,6 +284,7 @@ revealOnScroll();
 updateNavShow();
 updateActiveSection();
 updateParallax();
+adjustWelcomeOverlap();
 
 /* ======================================================
    BLÜTENANIMATION
