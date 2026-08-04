@@ -177,9 +177,16 @@ section {
     z-index:2;
 }
 
+/* Test-Branch marker: make the heading obviously different */
 .welcome h1 {
     font-size:clamp(45px,7vw,80px);
     margin:0 0 20px;
+    background: #ff4d4d; /* red test highlight */
+    color: white;
+    display: inline-block;
+    padding: 8px 18px;
+    border-radius: 10px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.15);
 }
 
 .welcome p {
