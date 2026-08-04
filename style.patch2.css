@@ -1,0 +1,17 @@
+/* cover tiny seam between hero and welcome (safe, reversible) */
+.hero {
+  position: relative; /* bleibt erhalten */
+  z-index: 2; /* stellt sicher, dass pseudo über Video/Overlay liegt */
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2px;      /* leicht nach unten ziehen */
+  height: 4px;       /* überdeckt kleine Lücken (feinjustierbar) */
+  background: #F8F6F2;/* exakt gleiche Farbe wie .welcome */
+  pointer-events: none;
+  z-index: 3;
+}
