@@ -1,3 +1,9 @@
+/* ======================================================
+    Enise Melda & Kürşat | Nişan Davetiyesi Website
+    Entwickler: AydeaDesign
+    Technologien: HTML • CSS • JavaScript
+====================================================== */
+
 * {
     box-sizing: border-box;
 }
@@ -940,6 +946,8 @@ section {
     .ending-title .ampersand{
         line-height:1;
     }
+    /* DIAGNOSTIC: temporarily hide background video on small screens to see if video rendering causes the seam */
+    #background-video { display: none !important; }
 }
 
 .footer-credit{
