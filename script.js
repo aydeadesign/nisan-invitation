@@ -18,11 +18,14 @@ const openEnvelope = document.getElementById("openEnvelope");
    MOBILE VIEWPORT
    Behebt die 100vh-Problematik auf iOS und Android,
    damit die Hero-Sektion immer die korrekte Höhe hat.
+   Nutzt visualViewport wenn verfügbar für sofortige Updates.
 ====================================================== */
 function setViewportHeight() {
+    // visualViewport liefert oft aktuelleres Height beim Ein-/Ausblenden der Browser-UI
+    const vh = (window.visualViewport && window.visualViewport.height) ? window.visualViewport.height : window.innerHeight;
     document.documentElement.style.setProperty(
         "--vh",
-        `${window.innerHeight * 0.01}px`
+        `${vh * 0.01}px`
     );
 }
 
@@ -36,6 +39,14 @@ window.addEventListener("scroll", () => {
     clearTimeout(vhTimeout);
     vhTimeout = setTimeout(setViewportHeight, 120);
 });
+// Wenn visualViewport verfügbar ist, reagiert es direkter
+if (window.visualViewport) {
+    window.visualViewport.addEventListener('resize', setViewportHeight);
+    window.visualViewport.addEventListener('scroll', () => {
+        clearTimeout(vhTimeout);
+        vhTimeout = setTimeout(setViewportHeight, 80);
+    });
+}
 
 /* ======================================================
    HERO
@@ -66,7 +77,8 @@ if (closedEnvelope) {
                     setTimeout(createPetal, i * 180);
                 }
                 setTimeout(() => {
-                    document.querySelector(".scroll-hint").classList.add("show");
+                    const hint = document.querySelector(".scroll-hint");
+                    hint && hint.classList.add("show");
                 }, 3000);
             }, 300);
         }, 1000);
