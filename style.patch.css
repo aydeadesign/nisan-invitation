@@ -1,0 +1,28 @@
+/* Fix: gleiche Hintergrundfarbe & Rendering-Hints, reduziert sichtbare Naht */
+body {
+  background: #F8F6F2; /* gleich wie .welcome */
+}
+
+.hero {
+  background: #F8F6F2;
+  /* height bleibt calc(var(--vh) * 100) */
+}
+
+#background-video {
+  display: block; /* entfernt inline-gap */
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+.scroll-hint,
+.open-envelope,
+.closed-envelope img {
+  will-change: transform, opacity;
+}
+
+/* Debug-Hilfsmittel (diagnostisch): falls der Balken weiter besteht, können wir das Video auf Mobilgeräten vorübergehend ausblenden, um zu prüfen, ob es die Ursache ist */
+@media (max-width: 768px) {
+  /* diagnostic only — wird nur angewendet, wenn nötig */
+  /* #background-video { display: none !important; } */
+}
