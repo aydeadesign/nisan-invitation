@@ -1,4 +1,18 @@
-/* Mobile/Landscape specific tweaks to hide seam */
+/* Replaced dynamic viewport units (svh/dvh) with JS-driven --vh to avoid mobile address-bar jumps */
+
+.welcome {
+  /* previously: min-height:100svh; min-height:100dvh; */
+  min-height: calc(var(--vh) * 100);
+  margin-top: -1px; /* minimal enforced overlap to avoid seam flakiness */
+}
+
+.program,
+.location,
+.hero {
+  min-height: calc(var(--vh) * 100);
+}
+
+/* Keep existing mobile/landscape fallback that hides the video and removes shadow */
 @media (max-width: 1024px), (orientation: landscape) {
   .hero > #background-video {
     display: none !important;
