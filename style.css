@@ -144,12 +144,12 @@ section {
     padding:120px 25px;
     text-align:center;
     border-radius:20px 20px 0 0;
-    margin-top:0px;
+    margin-top:-6px;
     position:relative;
     z-index:10;
     overflow:hidden;
     box-shadow:
-    0 -20px 40px rgba(0,0,0,.03);
+    0 -10px 30px rgba(0,0,0,.03);
     background:#F8F6F2;
 }
 
@@ -908,7 +908,7 @@ section {
     }
     /* Umschlag etwas höher */
     .open-envelope{
-        top: -80px;
+        top: -30px;
         transform:none;
     }
     /* Navigation */
