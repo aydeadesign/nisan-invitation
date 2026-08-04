@@ -98,17 +98,19 @@ closedEnvelope.addEventListener("click",()=>{
    Aktualisiert die verbleibende Zeit bis zum
    Verlobungstag im Sekundentakt.
 ====================================================== */
-const weddingDate = new Date("August 30, 2026 16:00:00").getTime();
+const weddingDate = new Date("2026-08-30T16:00:00").getTime();
 
+let countdownInterval;
 function updateCountdown(){
-    const now = new Date().getTime();
+    const now = Date.now();
     const distance = weddingDate - now;
 
-    if(distance < 0){
-        document.getElementById("days").innerHTML = "0";
-        document.getElementById("hours").innerHTML = "0";
-        document.getElementById("minutes").innerHTML = "0";
-        document.getElementById("seconds").innerHTML = "0";
+    if(distance <= 0){
+        document.getElementById("days").textContent = "0";
+        document.getElementById("hours").textContent = "00";
+        document.getElementById("minutes").textContent = "00";
+        document.getElementById("seconds").textContent = "00";
+        if(countdownInterval) clearInterval(countdownInterval);
         return;
     }
 
